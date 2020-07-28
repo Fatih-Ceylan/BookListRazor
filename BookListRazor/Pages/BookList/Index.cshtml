@@ -1,7 +1,6 @@
 ﻿@page
 @model BookListRazor.Pages.BookList.IndexModel
-
-
+ 
 <br />
 <div class="container row  p-0 m-0">
     <div class="col-9">
@@ -15,7 +14,7 @@
         <form method="post">
             @if (Model.Books.Count() > 0)
             {
-                <table class="table table-striped border">
+                <table class="table table-striped  border">
                     <tr class="table-secondary">
                         @*Tag Helper use on Razor View example*@
                         <th>
@@ -24,6 +23,9 @@
                         @*HTML helper example*@
                         <th>
                             @Html.DisplayNameFor(m => m.Books.FirstOrDefault().Author)
+                        </th>
+                        <th>
+                            <label asp-for="Books.FirstOrDefault().ISBN"></label>
                         </th>
                         <th>
 
@@ -39,8 +41,11 @@
 
                             </td>
                             <td>
-                                @*Long type method*@
+                                @*alternative long type method*@
                                 @Model.Books.FirstOrDefault().Author
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.ISBN)
                             </td>
                             <td>
                                 <button class="btn btn-danger btn-sm">Delete</button>
