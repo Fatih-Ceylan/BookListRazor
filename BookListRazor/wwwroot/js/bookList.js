@@ -55,7 +55,7 @@ function Delete(url) {
                     url: url,
                     success: function (data) {
                         if (data.success) {
-                            swal.fire('Success!', 'Data has been deleted')
+                            swal.fire('Success!', 'Data has been deleted', 'success')
                             toastr.success(data.message);
                             dataTable.ajax.reload();
                         }
@@ -67,5 +67,5 @@ function Delete(url) {
             });
         },
     });
-} 
+}
 
