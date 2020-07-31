@@ -1,11 +1,12 @@
-﻿var dataTable;
+﻿
+var dataTable;
 
 $(document).ready(function () {
     loadDataTable();
 });
 
 function loadDataTable() {
-    dataTable = $('#DT_load').dataTable({
+    dataTable = $('#DT_load').DataTable({
         "ajax": {
             "url": "/api/book",
             "type": "GET",
@@ -23,7 +24,7 @@ function loadDataTable() {
         Edit
             </a>
                 &nbsp;
-            <a  class='btn btn-danger text-white' style='cursor:pointer; width:70px;'>
+            <a  class='btn btn-danger text-white' style='cursor:pointer; width:70px;' onclick=Delete('/api/book?id='+${data})>
         Delete
             </a>
                           </div>`;
@@ -36,3 +37,35 @@ function loadDataTable() {
         "width": "100%"
     });
 }
+
+function Delete(url) {
+    swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this back!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+
+        preConfirm: function () {
+            return new Promise(function () {
+                $.ajax({
+                    type: "DELETE",
+                    url: url,
+                    success: function (data) {
+                        if (data.success) {
+                            swal.fire('Success!', 'Data has been deleted')
+                            toastr.success(data.message);
+                            dataTable.ajax.reload();
+                        }
+                        else {
+                            toastr.error(data.message);
+                        }
+                    }
+                });
+            });
+        },
+    });
+} 
+
