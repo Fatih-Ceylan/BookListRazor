@@ -26,13 +26,11 @@
                         @*HTML helper example*@
                         <th>
                             @Html.DisplayNameFor(m => m.Books.FirstOrDefault().Author)
-
                         </th>
                         <th>
                             <label asp-for="Books.FirstOrDefault().ISBN"></label>
                         </th>
                         <th>
-
                         </th>
                     </tr>
 
@@ -42,7 +40,6 @@
                             <td>
                                 @*We don't have equivalent Tag Helper for "displayfor" syntax. But we can create custom tag helper if needed *@
                                 @Html.DisplayFor(m => item.Name)
-
                             </td>
                             <td>
                                 @Html.DisplayFor(m => item.Author)
@@ -90,4 +87,3 @@
 @section Scripts{
     <script src="~/js/bookList.js"></script>
 }
-

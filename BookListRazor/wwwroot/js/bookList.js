@@ -1,5 +1,4 @@
-﻿
-var dataTable;
+﻿var dataTable;
 
 $(document).ready(function () {
     loadDataTable();
@@ -68,4 +67,3 @@ function Delete(url) {
         },
     });
 }
-
