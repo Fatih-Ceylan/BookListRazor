@@ -8,15 +8,12 @@ namespace BookListRazor.Pages.BookList
     public class UpsertModel : PageModel
     {
         private ApplicationDbContext _db;
-
         public UpsertModel(ApplicationDbContext db)
         {
             _db = db;
         }
-
         [BindProperty]
         public Book Book { get; set; }
-
         public async Task<IActionResult> OnGet(int? id)
         {
             Book = new Book();
@@ -33,7 +30,6 @@ namespace BookListRazor.Pages.BookList
             }
             return Page();
         }
-
         public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
