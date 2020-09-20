@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-
 namespace BookListRazor.Controllers
 {
     [Route("api/Book")]
@@ -10,12 +9,10 @@ namespace BookListRazor.Controllers
     public class BookController : Controller
     {
         private readonly ApplicationDbContext _db;
-
         public BookController(ApplicationDbContext db)
         {
             _db = db;
         }
-
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
